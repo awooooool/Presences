@@ -40,7 +40,8 @@ const startTimestamp = Math.floor(Date.now() / 1000),
 presence.on("UpdateData", async () => {
 	setPresence();
 	const newLang = await presence.getSetting<string>("lang").catch(() => "en"),
-		buttons = await presence.getSetting<boolean>("buttons");
+		buttons = await presence.getSetting<boolean>("buttons"),
+		privacy = await presence.getSetting<boolean>("privacy");
 
 	if (oldLang !== newLang || !strings) {
 		oldLang = newLang;
@@ -54,18 +55,27 @@ presence.on("UpdateData", async () => {
 		{ pathname } = window.location;
 	if (oldReddit) {
 		subReddit = document.querySelector(".redditname")
-			? `r/${document.querySelector(".redditname").textContent}`
+			? `${
+					!privacy
+						? `r/${document.querySelector(".redditname").textContent}` // if privacy mode is disabled
+						: "In a subreddit" // if privacy mode is enabled
+			  }`
 			: "Home";
 		if (pathname.includes("/comments/")) {
-			postTitle = document.querySelector("p.title > a").textContent;
-			presenceData.details = `${(await strings).reading} '${postTitle}'`;
-			presenceData.state = subReddit;
-			presenceData.buttons = [
-				{
-					url: `https://www.reddit.com${pathname}`,
-					label: (await strings).readButton
-				}
-			];
+			if (!privacy) {
+				postTitle = document.querySelector("p.title > a").textContent;
+				presenceData.details = `${(await strings).reading} '${postTitle}'`;
+				presenceData.state = subReddit;
+				presenceData.buttons = [
+					{
+						url: `https://www.reddit.com${pathname}`,
+						label: (await strings).readButton
+					}
+				];
+			} else {
+				presenceData.details = `${(await strings).reading.slice(0, -1)}`;
+				presenceData.state = subReddit;
+			}
 		} else if (pathname.startsWith("/user/")) {
 			username = document.querySelector(".titlebox > h1").textContent;
 			presenceData.details = (await strings).profile;
