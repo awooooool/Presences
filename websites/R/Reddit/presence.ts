@@ -63,6 +63,7 @@ presence.on("UpdateData", async () => {
 			: "Home";
 		if (pathname.includes("/comments/")) {
 			if (!privacy) {
+				// if privacy mode is disabled
 				postTitle = document.querySelector("p.title > a").textContent;
 				presenceData.details = `${(await strings).reading} '${postTitle}'`;
 				presenceData.state = subReddit;
@@ -73,19 +74,23 @@ presence.on("UpdateData", async () => {
 					}
 				];
 			} else {
+				// if privacy mode is enabled
 				presenceData.details = `${(await strings).reading.slice(0, -1)}`;
 				presenceData.state = subReddit;
 			}
 		} else if (pathname.startsWith("/user/")) {
-			username = document.querySelector(".titlebox > h1").textContent;
-			presenceData.details = (await strings).profile;
-			presenceData.state = username;
-			presenceData.buttons = [
-				{
-					url: `https://www.reddit.com${pathname}`,
-					label: (await strings).viewProfileButton
-				}
-			];
+			if (!privacy) {
+				// if privacy mode is disabled
+				username = document.querySelector(".titlebox > h1").textContent;
+				presenceData.details = (await strings).profile;
+				presenceData.state = username;
+				presenceData.buttons = [
+					{
+						url: `https://www.reddit.com${pathname}`,
+						label: (await strings).viewProfileButton
+					}
+				];
+			} else presenceData.details = (await strings).profile.slice(0, -4); // if privacy mode is enabled
 		} else if (pathname.startsWith("/search")) {
 			presenceData.details = (await strings).searchSomething;
 			presenceData.smallImageKey = "search";
