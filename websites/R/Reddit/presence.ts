@@ -90,7 +90,7 @@ presence.on("UpdateData", async () => {
 				"div._2SdHzo12ISmrC8H86TgSCp._29WrubtjAcKqzJSPdQqQ4h"
 			)?.textContent || "";
 		subReddit = document.querySelector(
-			"span._1GieMuLljOrqnVpRAwz7VP"
+			"span._19bCWnxeTjqzBElWZfIlJb"
 		).textContent;
 		subReddit =
 			subReddit === "Home" &&
