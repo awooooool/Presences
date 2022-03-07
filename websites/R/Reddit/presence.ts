@@ -107,7 +107,7 @@ presence.on("UpdateData", async () => {
 		];
 	} else if (pathname.startsWith("/user/")) {
 		username = document.querySelector(
-			"span._1GieMuLljOrqnVpRAwz7VP"
+			"span._1LCAhi_8JjayVo7pJ0KIh0"
 		).textContent;
 		nickname = document.querySelector("h4._3W1eUu5jHdcamkzFiJDITJ")
 			? document.querySelector("h4._3W1eUu5jHdcamkzFiJDITJ").textContent
