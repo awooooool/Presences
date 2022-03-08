@@ -121,20 +121,26 @@ presence.on("UpdateData", async () => {
 			}
 		];
 	} else if (pathname.startsWith("/user/")) {
-		username = document.querySelector(
-			"span._1LCAhi_8JjayVo7pJ0KIh0"
-		).textContent;
-		nickname = document.querySelector("h4._3W1eUu5jHdcamkzFiJDITJ")
-			? document.querySelector("h4._3W1eUu5jHdcamkzFiJDITJ").textContent
-			: "";
-		presenceData.details = (await strings).profile;
-		presenceData.state = nickname !== "" ? nickname : username;
-		presenceData.buttons = [
-			{
-				url: `https://www.reddit.com${pathname}`,
-				label: (await strings).viewProfileButton
-			}
-		];
+		if (!privacy) {
+			// if privacy mode is disabled
+			username = document.querySelector("span._1LCAhi_8JjayVo7pJ0KIh0")
+				? document.querySelector("span._1LCAhi_8JjayVo7pJ0KIh0").textContent
+				: document
+						.querySelector("span._28nEhn86_R1ENZ59eAru8S")
+						.textContent.match(/u\/[A-Za-z0-9_-]+/i)[0]
+						.slice(2);
+			nickname = document.querySelector("h4._3W1eUu5jHdcamkzFiJDITJ")
+				? document.querySelector("h4._3W1eUu5jHdcamkzFiJDITJ").textContent
+				: "";
+			presenceData.details = (await strings).profile;
+			presenceData.state = nickname !== "" ? nickname : username;
+			presenceData.buttons = [
+				{
+					url: `https://www.reddit.com${pathname}`,
+					label: (await strings).viewProfileButton
+				}
+			];
+		} else presenceData.details = (await strings).profile.slice(0, -4); // if privacy mode is enabled
 	} else if (pathname.startsWith("/search")) {
 		presenceData.details = (await strings).searchSomething;
 		presenceData.smallImageKey = "search";
