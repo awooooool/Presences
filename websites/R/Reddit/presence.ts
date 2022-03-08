@@ -146,19 +146,22 @@ presence.on("UpdateData", async () => {
 		presenceData.smallImageKey = "search";
 		presenceData.smallImageText = (await strings).searching;
 	} else if (pathname.startsWith("/rpan")) {
-		rpanTitle = document.querySelector("h1")
-			? document.querySelector("h1").textContent
-			: "Loading title...";
 		presenceData.details = `${(await strings).watching} (RPAN)`;
-		presenceData.state = rpanTitle;
+		if (!privacy) {
+			// if privacy mode is disabled
+			rpanTitle = document.querySelector("h1")
+				? document.querySelector("h1").textContent
+				: "Loading title...";
+			presenceData.state = rpanTitle;
+			presenceData.buttons = [
+				{
+					url: `https://www.reddit.com${pathname}`,
+					label: (await strings).streamButton
+				}
+			];
+		}
 		presenceData.smallImageKey = "live";
 		presenceData.smallImageText = (await strings).live;
-		presenceData.buttons = [
-			{
-				url: `https://www.reddit.com${pathname}`,
-				label: (await strings).streamButton
-			}
-		];
 	} else {
 		const sub = document.querySelector("span._1GieMuLljOrqnVpRAwz7VP");
 		if (sub === null) {
