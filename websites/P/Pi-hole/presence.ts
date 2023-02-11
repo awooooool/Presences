@@ -63,6 +63,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/messages.php")) {
 		// In Tools > Pi-hole diagnostics
 		presenceData.details = "In diagnostics";
+	} else if (path.includes("/admin/gravity.php")) {
+		// In Tools > Update Gravity
+		presenceData.details = "Updating Gravity";
 	}
 
 	presence.setActivity(presenceData);
