@@ -29,7 +29,8 @@ presence.on("UpdateData", async () => {
 		if (filter.length > 0) {
 			let smallText = "Filtering: ";
 			// Concat all active filter
-			for (const [index, element] of filter.entries()) { // TODO: add privacy mode
+			for (const [index, element] of filter.entries()) {
+				// TODO: add privacy mode
 				smallText = smallText + element.textContent;
 				if (index !== filter.length - 1) smallText = `${smallText} | `;
 			}
@@ -50,6 +51,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/groups-domains.php")) {
 		// In Domain management
 		presenceData.details = "Managing domains";
+	} else if (path.includes("/admin/groups-adlists.php")) {
+		// In ad lists
+		presenceData.details = "Managing adlists";
 	}
 
 	presence.setActivity(presenceData);
