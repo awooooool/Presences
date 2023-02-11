@@ -41,6 +41,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/db_queries.php")) {
 		// In Long-term Data > Query Log
 		presenceData.details = "In Long-term query log";
+	} else if (path.includes("/admin/groups.php")) {
+		// In groups
+		presenceData.details = "Managing groups";
 	}
 
 	presence.setActivity(presenceData);
