@@ -84,6 +84,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/network.php")) {
 		// In Tools > Network
 		presenceData.details = "In network overview";
+	} else if (path.includes("/admin/settings.php")) {
+		// In Settings
+		presenceData.details = "In settings";
 	}
 
 	presence.setActivity(presenceData);
