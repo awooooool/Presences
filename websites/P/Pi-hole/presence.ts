@@ -57,6 +57,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/dns_records.php")) {
 		// In local DNS records
 		presenceData.details = "Managing local DNS records";
+	} else if (path.includes("/admin/cname_records.php")) {
+		// In local CNAME records
+		presenceData.details = "Managing local CNAME records";
 	}
 
 	presence.setActivity(presenceData);
