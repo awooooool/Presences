@@ -17,7 +17,7 @@ presence.on("UpdateData", async () => {
 				.textContent,
 		};
 		presenceData.details = "In dashboard";
-		presenceData.state = `Total queries: ${stats.total} | Blocked: ${stats.blockedPercentage}`;
+		presenceData.state = `Total queries: ${stats.total} | Blocked: ${stats.blockedPercentage}`; // TODO: add privacy mode
 	} else if (path.includes("/admin/queries.php")) {
 		// In query log
 		presenceData.details = "In query log";
@@ -29,7 +29,7 @@ presence.on("UpdateData", async () => {
 		if (filter.length > 0) {
 			let smallText = "Filtering: ";
 			// Concat all active filter
-			for (const [index, element] of filter.entries()) {
+			for (const [index, element] of filter.entries()) { // TODO: add privacy mode
 				smallText = smallText + element.textContent;
 				if (index !== filter.length - 1) smallText = `${smallText} | `;
 			}
