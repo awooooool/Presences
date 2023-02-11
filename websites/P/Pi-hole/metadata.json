@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.premid.app/metadata/1.7",
+	"author": {
+		"id": "191388216509595648",
+		"name": "awooooool"
+	},
+	"service": "Pi-hole",
+	"description": {
+		"en": "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application[2][3][4][5] which acts as a DNS sinkhole[6] and optionally a DHCP server, intended for use on a private network.[1] It is designed for low-power embedded devices with network capability, such as the Raspberry Pi,[3][7] but can be installed on almost any Linux machine."
+	},
+	"url": "pi.hole",
+	"version": "1.0.0",
+	"logo": "https://i.imgur.com/63gxZBa.png",
+	"thumbnail": "https://i.imgur.com/EyZOUZm.png",
+	"color": "#990000",
+	"category": "other",
+	"tags": [
+		"dns",
+		"adblock"
+	]
+}
