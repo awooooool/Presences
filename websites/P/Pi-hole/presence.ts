@@ -81,6 +81,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/debug.php")) {
 		// In Tools > Generate debug log
 		presenceData.details = "Generating debug log";
+	} else if (path.includes("/admin/network.php")) {
+		// In Tools > Network
+		presenceData.details = "In network overview";
 	}
 
 	presence.setActivity(presenceData);
