@@ -60,6 +60,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/cname_records.php")) {
 		// In local CNAME records
 		presenceData.details = "Managing local CNAME records";
+	} else if (path.includes("/admin/messages.php")) {
+		// In Tools > Pi-hole diagnostics
+		presenceData.details = "In diagnostics";
 	}
 
 	presence.setActivity(presenceData);
