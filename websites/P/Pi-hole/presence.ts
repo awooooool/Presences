@@ -54,6 +54,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/groups-adlists.php")) {
 		// In ad lists
 		presenceData.details = "Managing adlists";
+	} else if (path.includes("/admin/dns_records.php")) {
+		// In local DNS records
+		presenceData.details = "Managing local DNS records";
 	}
 
 	presence.setActivity(presenceData);
