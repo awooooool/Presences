@@ -75,6 +75,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/taillog.php")) {
 		// In Tools > Tail pihole.log
 		presenceData.details = "Tailing pihole.log";
+	} else if (path.includes("/admin/taillog-FTL.php")) {
+		// In Tools > Tail FTL.log
+		presenceData.details = "Tailing FTL.log";
 	}
 
 	presence.setActivity(presenceData);
