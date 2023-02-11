@@ -4,10 +4,9 @@ const presence = new Presence({
 
 presence.on("UpdateData", async () => {
 	const presenceData: PresenceData = {
-		largeImageKey: "https://i.imgur.com/T0dkjxz.png",
-	};
-
-	const path = document.location.pathname;
+			largeImageKey: "https://i.imgur.com/T0dkjxz.png",
+		},
+		path = document.location.pathname;
 	if (path === "/admin" || path.includes("/admin/index.php")) {
 		const stats = {
 			total: document.querySelector("#dns_queries_today").textContent,
