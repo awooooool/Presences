@@ -47,6 +47,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/groups-clients.php")) {
 		// In client-group management
 		presenceData.details = "Managing clients";
+	} else if (path.includes("/admin/groups-domains.php")) {
+		// In Domain management
+		presenceData.details = "Managing domains";
 	}
 
 	presence.setActivity(presenceData);
