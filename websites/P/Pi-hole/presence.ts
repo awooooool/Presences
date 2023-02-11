@@ -69,6 +69,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/queryads.php")) {
 		// In Tools > Search Adlists
 		presenceData.details = "Searching through adlists";
+	} else if (path.includes("/admin/auditlog.php")) {
+		// In Tools > Audit log
+		presenceData.details = "Auditing logs";
 	}
 
 	presence.setActivity(presenceData);
