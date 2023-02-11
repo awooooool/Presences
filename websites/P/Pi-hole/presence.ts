@@ -66,6 +66,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/gravity.php")) {
 		// In Tools > Update Gravity
 		presenceData.details = "Updating Gravity";
+	} else if (path.includes("/admin/queryads.php")) {
+		// In Tools > Search Adlists
+		presenceData.details = "Searching through adlists";
 	}
 
 	presence.setActivity(presenceData);
