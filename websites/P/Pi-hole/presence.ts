@@ -72,6 +72,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/auditlog.php")) {
 		// In Tools > Audit log
 		presenceData.details = "Auditing logs";
+	} else if (path.includes("/admin/taillog.php")) {
+		// In Tools > Tail pihole.log
+		presenceData.details = "Tailing pihole.log";
 	}
 
 	presence.setActivity(presenceData);
