@@ -78,6 +78,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/taillog-FTL.php")) {
 		// In Tools > Tail FTL.log
 		presenceData.details = "Tailing FTL.log";
+	} else if (path.includes("/admin/debug.php")) {
+		// In Tools > Generate debug log
+		presenceData.details = "Generating debug log";
 	}
 
 	presence.setActivity(presenceData);
