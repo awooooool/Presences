@@ -38,6 +38,9 @@ presence.on("UpdateData", async () => {
 	} else if (path.includes("/admin/db_graph.php")) {
 		// In Long-term Data > Graphics
 		presenceData.details = "In Long-term data graphics";
+	} else if (path.includes("/admin/db_queries.php")) {
+		// In Long-term Data > Query Log
+		presenceData.details = "In Long-term query log";
 	}
 
 	presence.setActivity(presenceData);
